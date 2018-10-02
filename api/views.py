@@ -38,21 +38,32 @@ def generateRandomOrders(userInput):
     menu = getMenuFromDatabase(companyRequested, stateRequested)
     if menu is not None:
         menuDictionary = menu.data
-
-        #print(randomMenuItemName + " : " + str(randomMenuItemPrice))
+        totalNumberOfItemsInMenu = len(menuDictionary) + sum(len(v) for v in menuDictionary.keys())
+        #abitrary number of times to loop
+        breakWhileLoop = (amountRequested + totalNumberOfItemsInMenu) / 2
         total = 0
         iterations = 0
         randomOrder = {}
-        while iterations <= 50:
-            randomMenuItem = generateRandomOrder(menuDictionary)
-            randomMenuNamePrice = randomMenuItem['name']
+        while iterations <= breakWhileLoop:
+            randomMenuItem = pickRandomMenuItem(menuDictionary)
+            randomMenuItemName = randomMenuItem['name']
             randomMenuItemPrice = randomMenuItem['price']
             if (total + randomMenuItemPrice <= amountRequested):
-                randomOrder[randomMenuNamePrice] = randomMenuItemPrice
+                #check to see if menu item is already in the dictionary
+                if (randomMenuItemName in randomOrder):
+                    incrementCount = randomOrder[randomMenuItemName]['count'] + 1
+                    randomOrder[randomMenuItemName] = { 'price' : randomMenuItemPrice, 'count' : incrementCount }
+                else:
+                    randomOrder[randomMenuItemName] = { 'price' : randomMenuItemPrice, 'count' : 1 }
                 total = total + randomMenuItemPrice
             iterations += 1
 
-        randomOrder['total'] = round(total, 2)
+        #checks if items were put into the random order, otherwise send back empty = true flag to denote empty random order
+        if len(randomOrder) > 0:
+            print(len(randomOrder))
+            randomOrder['total'] = { 'price' : round(total, 2) }
+        else:
+            randomOrder['empty'] = True
 
         return JsonResponse(randomOrder)
     else:
@@ -67,7 +78,7 @@ def getMenuFromDatabase(companyRequested, stateRequested):
         print("Company and/or State does not exist")
         return null
 
-def generateRandomOrder(menu):
+def pickRandomMenuItem(menu):
     randomMenuType = random.choice(list(menu.keys()))
     menuItems = menu[randomMenuType]
     randomMenuItem = random.choice(menuItems)
