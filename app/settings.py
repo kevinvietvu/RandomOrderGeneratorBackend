@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+from .config import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'k=wbvm72tb#xh@p&hnqa7p(r*t(vc_&8nd*ej(-d*k3gnx1sdt'
+SECRET_KEY = CONFIG_SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -93,7 +94,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'ujhnkcqe',
         'USER': 'ujhnkcqe',
-        'PASSWORD': 'Hl3f9PB1UAE8UtFPCjxs7w6m1cmzHfZI',
+        'PASSWORD': CONFIG_DB_PASS_WORD,
         'HOST': 'tantor.db.elephantsql.com',
         'PORT': '5432',
     }

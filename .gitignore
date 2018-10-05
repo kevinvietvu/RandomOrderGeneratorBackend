@@ -4,5 +4,8 @@
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
 
-#Dockerfile
+# Dockerfile
 Dockerfile
+
+# Production Sensitive Info
+config.py
