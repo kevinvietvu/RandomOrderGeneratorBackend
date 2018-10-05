@@ -4,5 +4,5 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('<str:companyRequested>/<str:stateRequested>/', views.getMenuForFrontEnd),
-    path('test', views.getUserInput)
+    path('randomOrder', views.getUserInput)
 ]

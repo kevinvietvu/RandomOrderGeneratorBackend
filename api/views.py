@@ -60,7 +60,6 @@ def generateRandomOrders(userInput):
 
         #checks if items were put into the random order, otherwise send back empty = true flag to denote empty random order
         if len(randomOrder) > 0:
-            print(len(randomOrder))
             randomOrder['total'] = { 'price' : round(total, 2) }
         else:
             randomOrder['empty'] = True

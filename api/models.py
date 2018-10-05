@@ -14,7 +14,7 @@ class Companys(models.Model):
 
     class Meta:
         """
-            can't create primary key because default is id created by Django ORM,
+            can't create primary key because default id is created by Django ORM,
             so create a unique field combining company and state instead
         """
         unique_together = (("company", "state"),)
