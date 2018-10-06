@@ -11,20 +11,27 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import django_heroku
 from .config import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = CONFIG_SECRET_KEY
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+# SECURITY WARNING: keep the secret key used in production secret!
+if DEBUG == True:
+    SECRET_KEY = CONFIG_SECRET_KEY
+    DB_PASS_WORD = CONFIG_DB_PASS_WORD
+    DB_URL = CONFIG_DB_URL
+else:
+    SECRET_KEY = os.getenv('SECRET_KEY', 'Optional default value')
+    DB_PASS_WORD = os.getenv('DB_PASSWORD', 'Optional default value')
+    DB_URL = os.getenv('DB_URL', 'Optional default value')
 
 #ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['*']
@@ -92,9 +99,9 @@ WSGI_APPLICATION = 'app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ujhnkcqe',
-        'USER': 'ujhnkcqe',
-        'PASSWORD': CONFIG_DB_PASS_WORD,
+        'NAME': DB_URL,
+        'USER': DB_URL,
+        'PASSWORD': DB_PASS_WORD,
         'HOST': 'tantor.db.elephantsql.com',
         'PORT': '5432',
     }
@@ -138,3 +145,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
