@@ -30,12 +30,11 @@ if DEBUG == True:
     DB_URL = CONFIG_DB_URL
 else:
     SECRET_KEY = os.getenv('SECRET_KEY', 'Optional default value')
-    DB_PASS_WORD = os.getenv('DB_PASSWORD', 'Optional default value')
-    DB_URL = os.getenv('DB_URL', 'Optional default value')
+    DB_PASS_WORD = os.getenv('DB_PASS_WORD', 'Optional default value')
+    DB_URL = os.getenv('DATABASE_URL', 'Optional default value')
 
 #ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
