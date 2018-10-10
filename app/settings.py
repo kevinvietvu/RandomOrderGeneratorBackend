@@ -59,8 +59,9 @@ MIDDLEWARE = [
 ]
 
 #Lets any frontend server call get on backend api service, change this later to domain names
-#CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = True
 
+"""
 CORS_ORIGIN_WHITELIST = (
     'localhost:8000',
     'localhost:3000',
@@ -68,7 +69,7 @@ CORS_ORIGIN_WHITELIST = (
     'http://randomordergenerator.herokuapp.com/',
     'https://randomordergenerator.herokuapp.com/',
     'randomordergenerator.herokuapp.com/'
-)
+) """
 
 ROOT_URLCONF = 'app.urls'
 
