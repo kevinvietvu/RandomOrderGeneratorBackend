@@ -21,11 +21,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 DEBUG = False
-from .config import *
+#from .config import *
 if DEBUG == True:
-    SECRET_KEY = CONFIG_SECRET_KEY
-    DB_PASS_WORD = CONFIG_DB_PASS_WORD
-    DB_URL = CONFIG_DB_URL
+    #SECRET_KEY = CONFIG_SECRET_KEY
+    #DB_PASS_WORD = CONFIG_DB_PASS_WORD
+    #DB_URL = CONFIG_DB_URL
 else:
     SECRET_KEY = os.getenv('SECRET_KEY', 'Optional default value')
     DB_PASS_WORD = os.getenv('DB_PASS_WORD', 'Optional default value')
@@ -61,7 +61,6 @@ MIDDLEWARE = [
 #Lets any frontend server call get on backend api service, change this later to domain names
 #CORS_ORIGIN_ALLOW_ALL = True
 
-
 CORS_ORIGIN_WHITELIST = (
     'localhost:8000',
     'localhost:3000',
@@ -70,7 +69,6 @@ CORS_ORIGIN_WHITELIST = (
     'https://randomordergenerator.herokuapp.com/',
     'randomordergenerator.herokuapp.com/'
 )
-
 
 ROOT_URLCONF = 'app.urls'
 
