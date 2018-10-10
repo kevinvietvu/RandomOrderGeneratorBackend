@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = False
 #from .config import *
 if DEBUG == True:
-    #SECRET_KEY = CONFIG_SECRET_KEY
-    #DB_PASS_WORD = CONFIG_DB_PASS_WORD
-    #DB_URL = CONFIG_DB_URL
+    SECRET_KEY = CONFIG_SECRET_KEY
+    DB_PASS_WORD = CONFIG_DB_PASS_WORD
+    DB_URL = CONFIG_DB_URL
 else:
     SECRET_KEY = os.getenv('SECRET_KEY', 'Optional default value')
     DB_PASS_WORD = os.getenv('DB_PASS_WORD', 'Optional default value')
