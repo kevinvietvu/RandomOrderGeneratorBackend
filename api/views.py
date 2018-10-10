@@ -8,9 +8,9 @@ import random
 
 # Create your views here.
 def index(request):
-    menu = get_object_or_404(Companys, company='McDonalds', state='CA')
-    jsonData = menu.data
-    return JsonResponse(jsonData)
+    #menu = get_object_or_404(Companys, company='McDonalds', state='CA')
+    #jsonData = menu.data
+    return JsonResponse({})
 
 def getMenuForFrontEnd(request, companyRequested, stateRequested):
     menu = get_object_or_404(Companys, company=companyRequested, state=stateRequested)

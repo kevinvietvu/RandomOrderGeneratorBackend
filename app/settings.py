@@ -12,18 +12,16 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 import django_heroku
-#from .config import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-
-# SECURITY WARNING: keep the secret key used in production secret!
+from .config import *
 if DEBUG == True:
     SECRET_KEY = CONFIG_SECRET_KEY
     DB_PASS_WORD = CONFIG_DB_PASS_WORD
@@ -33,8 +31,8 @@ else:
     DB_PASS_WORD = os.getenv('DB_PASS_WORD', 'Optional default value')
     DB_URL = os.getenv('DATABASE_URL', 'Optional default value')
 
-#ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['*']
+#ALLOWED_HOSTS = [] (empty bracket defaults to 'localhost', '127.0.0.1', '[::1]' in debug mode)
+ALLOWED_HOSTS = ['.randomordergeneratorbackend.herokuapp.com/', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -61,15 +59,18 @@ MIDDLEWARE = [
 ]
 
 #Lets any frontend server call get on backend api service, change this later to domain names
-CORS_ORIGIN_ALLOW_ALL = True
+#CORS_ORIGIN_ALLOW_ALL = True
 
-"""
+
 CORS_ORIGIN_WHITELIST = (
     'localhost:8000',
     'localhost:3000',
-    '127.0.0.1:9000'
+    '127.0.0.1:9000',
+    'http://randomordergenerator.herokuapp.com/',
+    'https://randomordergenerator.herokuapp.com/',
+    'randomordergenerator.herokuapp.com/'
 )
-"""
+
 
 ROOT_URLCONF = 'app.urls'
 
