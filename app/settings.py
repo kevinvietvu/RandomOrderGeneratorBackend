@@ -20,8 +20,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
-DEBUG = False
-#from .config import *
+DEBUG = True
+from .config import *
 if DEBUG == True:
     SECRET_KEY = CONFIG_SECRET_KEY
     DB_PASS_WORD = CONFIG_DB_PASS_WORD
@@ -66,9 +66,9 @@ CORS_ORIGIN_WHITELIST = (
     'localhost:8000',
     'localhost:3000',
     '127.0.0.1:9000',
-    'http://randomordergenerator.herokuapp.com/',
-    'https://randomordergenerator.herokuapp.com/',
-    'randomordergenerator.herokuapp.com/'
+    'http://randomordergenerator.herokuapp.com',
+    'https://randomordergenerator.herokuapp.com',
+    'randomordergenerator.herokuapp.com'
 ) """
 
 ROOT_URLCONF = 'app.urls'

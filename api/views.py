@@ -5,11 +5,10 @@ from .models import Companys
 from django.core.exceptions import ObjectDoesNotExist
 import json
 import random
+import os
 
 # Create your views here.
 def index(request):
-    #menu = get_object_or_404(Companys, company='McDonalds', state='CA')
-    #jsonData = menu.data
     return JsonResponse({})
 
 def getMenuForFrontEnd(request, companyRequested, stateRequested):
